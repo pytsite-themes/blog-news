@@ -1,0 +1,8 @@
+{% if articles | length %}
+    <div class="row">
+        {% set article = articles[0] %}
+        {% set thumb_css = 'col-xs-B-12 col-xs-12 col-lg-12' %}
+
+        {% include 'v1/article-thumb-3' %}
+    </div>
+{% endif %}

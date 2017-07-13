@@ -1,0 +1,37 @@
+<nav class="navbar">
+    <div class="container">
+        <div class="flex-desktop">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar-top"
+                        aria-expanded="false">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="{{ base_url() }}">
+                    <span class="image">
+                        <img src="{{ theme_logo_url(width=100, height=100) }}" class="img-responsive" alt="{{ t('app@app_name') }}">
+                    </span>
+
+                    <span class="app-name">{{ t('app@app_name') }}</span>
+                </a>
+            </div>
+
+            <div class="navbar-spacer"></div>
+
+            {% if content_sections %}
+                <div class="collapse navbar-collapse" id="navbar-top">
+                    <ul class="nav navbar-nav">
+                        {% set max = top_navbar_items_num %}
+                        {% for section in content_sections %}
+                            {% set li_css = '' %}
+                            {% if loop.index > max %} {% set li_css = 'visible-xs-B visible-xs' %} {% endif %}
+                            {{ nav_link(rule_url('article_index_by_section', {'term_alias': section.alias}), section.title | e, li_css=li_css) }}
+                        {% endfor %}
+                    </ul>
+                </div>
+            {% endif %}
+        </div>
+    </div>
+</nav>

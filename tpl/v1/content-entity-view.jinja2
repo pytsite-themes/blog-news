@@ -1,0 +1,116 @@
+{% extends 'html' %}
+
+{% block content %}
+    <div id="content-entity-view" class="content-entity container" data-model="{{ entity.model }}"
+         data-entity-id="{{ entity.id }}">
+
+        <div class="row">
+            <article class="article col-xs-12">
+                {% block description %}
+                    <p class="description">
+                        {{ entity.description | e }}
+                    </p>
+                {% endblock %}
+
+                <div class="body">
+                    {{ entity.body }}
+                </div>
+
+                {% if entity.ext_links %}
+                    <div class="ext-links">
+                        <span>{{ t('external_links') }}</span>:
+                        {% for link in entity.ext_links %}
+                            <a target="_blank" href="{{ link }}">{{ t('link')|lower }}</a>&nbsp;
+                        {% endfor %}
+                    </div>
+                {% endif %}
+
+                {% if entity.odm_auth_check_permission('modify') or entity.odm_auth_check_permission('modify_own') %}
+                    <div class="row actions">
+                        <div class="col-xs-12 text-xs-B-center text-sm-right">
+                            <a href="{{ entity.modify_url }}" class="btn btn-default">{{ t('edit') }}</a>
+                        </div>
+                    </div>
+                {% endif %}
+
+                <div class="row public-actions">
+                    {% block tags %}
+                        <div class="tags col-sm-6 text-xs-B-center text-sm-left">
+                            {{ entity_tags }}
+                        </div>
+                    {% endblock %}
+
+                    {% block share %}
+                        {% if share_widget %}
+                            <div class="share col-sm-6 text-xs-B-center text-sm-right">
+                                {{ share_widget }}
+                            </div>
+                        {% endif %}
+                    {% endblock %}
+                </div>
+            </article>
+        </div>
+
+        {% block comments %}
+            {% if comments_widget %}
+                <div class="row comments">
+                    <div class="col-xs-12 text-center">
+                        <h2 class="block-title">{{ t('comments') }}</h2>
+                        {{ comments_widget }}
+                    </div>
+                </div>
+            {% endif %}
+        {% endblock %}
+
+        {% if related_1 %}
+            <div class="related">
+                <div class="row">
+                    <div class="col-xs-12 text-center">
+                        <h2 class="block-title">{{ t('recommended_articles') }}</h2>
+                    </div>
+                </div>
+
+                <div class="article-thumbs">
+                    {% block related_thumbs_1 %}
+                        {% set articles = related_1 %}
+                        {% include 'v1/article-thumbs-4' %}
+                    {% endblock %}
+                </div>
+            </div>
+        {% endif %}
+
+        {% if related_2 %}
+            <div class="related">
+                <div class="row">
+                    <div class="col-xs-12 text-center">
+                        <h2 class="block-title">{{ t('popular_articles') }}</h2>
+                    </div>
+                </div>
+
+                <div class="article-thumbs">
+                    {% block related_thumbs_2 %}
+                        {% set articles = related_2 %}
+                        {% include 'v1/article-thumbs-5' %}
+                    {% endblock %}
+                </div>
+            </div>
+        {% endif %}
+
+        {% if related_3 %}
+            <div class="related">
+                <div class="row">
+                    <div class="col-xs-12 text-center">
+                        <h2 class="block-title">{{ t('read_next_articles') }}</h2>
+                    </div>
+                </div>
+
+                <div class="article-thumbs">
+                    {% block related_thumbs_3 %}
+                        {% set articles = related_3 %}
+                        {% include 'v1/article-thumbs-3' %}
+                    {% endblock %}
+                </div>
+            </div>
+        {% endif %}
+    </div>
+{% endblock %}

@@ -1,0 +1,16 @@
+{% extends 'v1/content-entity-index' %}
+
+{% block article_thumbs_1 %}
+    {% set articles = entities[0:5] %}
+    {% include 'v3/article-thumbs-1' %}
+{% endblock %}
+
+{% block article_thumbs_2 %}
+    {% set articles = entities[5:8] %}
+    {% include 'v3/article-thumbs-2' %}
+{% endblock %}
+
+{% block article_thumbs_3 %}
+    {% set articles = entities[8:10] %}
+    {% include 'v3/article-thumbs-3' %}
+{% endblock %}

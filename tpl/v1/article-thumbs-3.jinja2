@@ -1,0 +1,12 @@
+{% if articles | length %}
+    <div class="row">
+        {% for i in range(0, 2) %}
+            {% if articles[i] %}
+                {% set article = articles[i] %}
+                {% set thumb_css = 'col-xs-B-12 col-xs-6 col-lg-6' %}
+
+                {% include 'v1/article-thumb-2' %}
+            {% endif %}
+        {% endfor %}
+    </div>
+{% endif %}

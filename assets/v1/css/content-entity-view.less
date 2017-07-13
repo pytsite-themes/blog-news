@@ -1,0 +1,69 @@
+@import 'colors';
+@import 'article-thumbs-block';
+@import 'article-thumb';
+
+#content-entity-view {
+  .article {
+    background: @color-content-entity-view-bg;
+    font-size: 18px;
+    font-weight: 300;
+    margin-bottom: 40px;
+
+    p, ul, ol, blockquote {
+      margin-bottom: 1em
+    }
+
+    .description {
+      font-size: 20px;
+      font-weight: 400;
+      padding-bottom: 20px;
+      margin-bottom: 30px;
+      border-bottom: 2px solid @color-content-entity-view-description-line;
+    }
+
+    .body, .ext-links, .actions, .public-actions, .tags, .share {
+      margin-bottom: 30px;
+    }
+
+    .tags .term:before {
+      content: '#';
+    }
+  }
+
+  .block-title {
+    margin-bottom: 30px;
+  }
+
+  .comments {
+    background: @color-content-entity-view-bg;
+    padding: 35px;
+    margin-bottom: 40px;
+
+    .block-title {
+      margin-bottom: 40px;
+    }
+  }
+
+  .related {
+    margin-bottom: 40px;
+  }
+}
+
+@media (min-width: 768px) {
+  #content-entity-view {
+    .article {
+      font-size: 22px;
+      padding: 35px 35px 0;
+      margin-top: 35px;
+
+      .description {
+        font-size: 26px;
+      }
+    }
+
+    .block-title {
+      font-size: 40px;
+      font-weight: 400;
+    }
+  }
+}

@@ -1,0 +1,17 @@
+<div class="article-thumb v1-3 {{ thumb_css }}" data-responsive-bg-url="{{ article.images[0].url }}">
+    <div class="title-and-meta">
+        <div class="title">
+            <div class="inner">{{ article.title | e }}</div>
+        </div>
+
+        <div class="meta">
+            <div class="inner">
+                <div class="date">{{ article.publish_date_pretty }}</div>
+                <div class="section"><i class="fa fa-tag"></i>#{{ article.section.title | e }}</div>
+            </div>
+        </div>
+    </div>
+
+    <a href="{{ article.url }}" class="link"></a>
+
+</div>

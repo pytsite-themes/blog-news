@@ -1,0 +1,42 @@
+<header id="page-header" {% if fullscreen_page_header %}class="fullscreen"{% endif %}
+        {% if page_header_bg %}style="background-image: url({{ page_header_bg }})" {% endif %}>
+
+    {% include 'parts/navbar-top' %}
+
+    {% if page_header_article %}
+        <div id="page-header-article"
+             style="background-image: url('{{ page_header_article.images[0].get_url(width=1200) }}')">
+            <div class="container">
+                <div class="inner">
+                    <h1 class="title">
+                        {% if page_header_article.url == current_url() %}
+                            {{ page_header_article.title | e }}
+                        {% else %}
+                            <a href="{{ page_header_article.url }}">{{ page_header_article.title | e }}</a>
+                        {% endif %}
+                    </h1>
+                    <div class="meta">
+                        <div class="column first">
+                            <div class="author-picture">
+                                <a href="{{ page_header_article.author.url }}">
+                                    <img src="{{ page_header_article.author.picture.get_url(width=150, height=150) }}"
+                                         alt="{{ page_header_article.author.full_name | e }}"
+                                         class="img-responsive img-circle">
+                                </a>
+                            </div>
+                        </div>
+                        <div class="column second">
+                            <div class="author-name">
+                                <a href="{{ page_header_article.author.url }}">
+                                    {{ page_header_article.author.full_name | e }}
+                                </a>
+                            </div>
+                            <div class="publish-date">{{ page_header_article.publish_date_pretty }}</div>
+                            <div class="tags">{{ page_header_article_tags }}</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    {% endif %}
+</header>

@@ -1,0 +1,46 @@
+@import '../../v1/css/article-thumb';
+@import 'colors';
+
+.article-thumb {
+  .meta {
+    .inner {
+      border-top: 0;
+      padding-top: 0
+    }
+  }
+
+  &.v3-1, &.v3-2 {
+    .title {
+      font-size: 26px;
+    }
+
+    .image {
+      position: relative;
+
+      .meta {
+        position: absolute;
+        left: 0;
+        bottom: 0;
+        width: 100%;
+        background: @color-article-thumb-v1-3-bg;
+        color: @color-article-thumb-bg;
+        padding-top: 100px;
+      }
+    }
+  }
+
+  &.v3-1 {
+    .title {
+      padding: 0;
+      background: transparent;
+      margin-bottom: .25em;
+      color: @color-article-thumb-v3-1-title;
+    }
+
+    .description {
+      background: @color-article-thumb-bg;
+      padding: 20px;
+      font-size: 20px;
+    }
+  }
+}

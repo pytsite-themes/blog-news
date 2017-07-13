@@ -1,0 +1,26 @@
+{% extends 'html' %}
+
+{% block content %}
+    <div id="home" class="container">
+        {% for section in sections %}
+            {% if latest_articles_by_section[section.alias] %}
+                <div class="section">
+                    <h2 class="section-title">{{ section.title | e }}</h2>
+                    {% set k = loop.index0 % 3 %}
+                    {% if k == 1 %}
+                        {% set l = 2 %}
+                    {% elif k == 2 %}
+                        {% set l = 3 %}
+                    {% else %}
+                        {% set l = 1 %}
+                    {% endif %}
+
+                    <div class="article-thumbs article-thumbs-{{ l }}">
+                        {% set articles = latest_articles_by_section[section.alias] %}
+                        {% include 'v1/article-thumbs-' ~ l %}
+                    </div>
+                </div>
+            {% endif %}
+        {% endfor %}
+    </div>
+{% endblock %}

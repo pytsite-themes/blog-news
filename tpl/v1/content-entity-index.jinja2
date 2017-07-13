@@ -1,0 +1,40 @@
+{% extends 'html' %}
+
+{% block content %}
+    <div id="content-entity-index" class="container">
+
+        <h1 class="block-title text-center">{{ metatag_get('title') }}</h1>
+
+        {% if entities | length %}
+            <div class="article-thumbs">
+                {% block article_thumbs_1 %}
+                    {% set articles = entities[0:5] %}
+                    {% include 'v1/article-thumbs-1' %}
+                {% endblock %}
+            </div>
+        {% endif %}
+
+        {% if entities | length > 5 %}
+
+            <div class="article-thumbs">
+                {% block article_thumbs_2 %}
+                    {% set articles = entities[5:8] %}
+                    {% include 'v1/article-thumbs-2' %}
+                {% endblock %}
+            </div>
+        {% endif %}
+
+        {% if entities | length > 8 %}
+            <div class="article-thumbs">
+                {% block article_thumbs_3 %}
+                    {% set articles = entities[8:10] %}
+                    {% include 'v1/article-thumbs-2' %}
+                {% endblock %}
+            </div>
+        {% endif %}
+
+        <div class="pagination-widget text-center">
+            {{ pager }}
+        </div>
+    </div>
+{% endblock %}

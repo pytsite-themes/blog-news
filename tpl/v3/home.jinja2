@@ -1,0 +1,44 @@
+{% extends 'html' %}
+
+{% block content %}
+    <div id="home" class="container">
+
+        {% if latest_articles_first_left %}
+            <div class="row first">
+                <div class="left col-xs-12 col-sm-8">
+                    {% for article in latest_articles_first_left %}
+                        {% include 'v3/article-thumb-1' %}
+                    {% endfor %}
+                </div>
+
+                {% if latest_articles_first_right %}
+                    <div class="right col-xs-12 col-sm-4">
+                        <h2 class="block-title">{{ t('popular_articles') }}</h2>
+                        {% for article in latest_articles_first_right %}
+                            {% include 'v3/article-thumb-2' %}
+                        {% endfor %}
+                    </div>
+                {% endif %}
+            </div>
+        {% endif %}
+
+        {% if latest_articles_second_left %}
+            <div class="row second">
+                <div class="left col-xs-12 col-sm-8">
+                    {% for article in latest_articles_second_left %}
+                        {% include 'v3/article-thumb-1' %}
+                    {% endfor %}
+                </div>
+
+                {% if latest_articles_second_right %}
+                    <div class="right col-xs-12 col-sm-4">
+                        <h2 class="block-title">{{ t('recommended_articles') }}</h2>
+                        {% for article in latest_articles_second_right %}
+                            {% include 'v3/article-thumb-2' %}
+                        {% endfor %}
+                    </div>
+                {% endif %}
+            </div>
+        {% endif %}
+    </div>
+{% endblock %}

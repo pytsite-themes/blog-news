@@ -1,0 +1,16 @@
+<div class="article-thumb v1-1 {{ thumb_css }}">
+    <div class="image">
+        {{ article.images[0].get_responsive_html(aspect_ratio=1.5) }}
+    </div>
+
+    <div class="title">{{ article.title | e }}</div>
+
+    <div class="meta">
+        <div class="inner">
+            <div class="date">{{ article.publish_date_pretty }}</div>
+            <div class="section"><i class="fa fa-tag"></i>#{{ article.section.title | e }}</div>
+        </div>
+    </div>
+
+    <a href="{{ article.url }}" class="link"></a>
+</div>

@@ -1,0 +1,56 @@
+<footer id="page-footer">
+    <div class="first">
+        <div class="container">
+            <div class="logo text-center">
+                <div class="image">
+                    <img src="{{ theme_logo_url(width=100, height=100) }}" class="img-responsive"
+                         alt="{{ t('app@app_name') }}">
+                </div>
+
+                <div class="app-name">{{ t('app@app_name') }}</div>
+            </div>
+
+            <div class="language-nav">
+                {{ language_nav }}
+            </div>
+
+            {% set app_links = settings_get('app.links', []) %}
+            {% if app_links %}
+                <div class="links">
+                    {% for link in settings_get('app.links', ()) %}
+                        {% set icon = 'globe' %}
+                        {% if 'facebook.com' in link %}
+                            {% set icon = 'facebook' %}
+                        {% elif 'twitter.com' in link %}
+                            {% set icon = 'twitter' %}
+                        {% elif 'google.com' in link %}
+                            {% set icon = 'google-plus' %}
+                        {% elif 'tumblr.com' in link %}
+                            {% set icon = 'tumblr' %}
+                        {% elif 'instagram.com' in link %}
+                            {% set icon = 'instagram' %}
+                        {% elif 'vk.com' in link %}
+                            {% set icon = 'vk' %}
+                        {% endif %}
+                        <a class="item" target="_blank" href="{{ link }}"><i class="fa fa-{{ icon }}"></i></a>
+                    {% endfor %}
+
+                    <a class="item" href="mailto:{{ settings_get('mail.from') }}"><i class="fa fa-envelope"></i></a>
+                </div>
+            {% endif %}
+        </div>
+    </div>
+
+    <div class="second">
+        <div class="container">
+            <div class="inner">
+                <div class="left">
+                    {{ t('footer_second_left') }}
+                </div>
+                <div class="right">
+                    {{ t('footer_second_right') }}
+                </div>
+            </div>
+        </div>
+    </div>
+</footer>

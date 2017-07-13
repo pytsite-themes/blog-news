@@ -1,0 +1,16 @@
+{% if articles | length %}
+    <div class="row">
+        {% for i in range(0, 5) %}
+            {% if articles[i] %}
+                <div class="col-xs-12">
+                    {% set article = articles[i] %}
+                    {% if i == 0 %}
+                        {% include 'v3/article-thumb-2' %}
+                    {% else %}
+                        {% include 'v1/article-thumb-2' %}
+                    {% endif %}
+                </div>
+            {% endif %}
+        {% endfor %}
+    </div>
+{% endif %}
