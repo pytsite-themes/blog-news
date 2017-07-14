@@ -3,11 +3,16 @@
 @import 'article-thumb';
 
 #content-entity-view {
+  &.no-header-article {
+    margin-top: 80px;
+  }
+
   .article {
     background: @color-content-entity-view-bg;
     font-size: 18px;
     font-weight: 300;
     margin-bottom: 40px;
+    padding-top: 35px;
 
     p, ul, ol, blockquote {
       margin-bottom: 1em
@@ -51,6 +56,10 @@
 
 @media (min-width: 768px) {
   #content-entity-view {
+    &.no-header-article {
+      margin-top: 0;
+    }
+
     .article {
       font-size: 22px;
       padding: 35px 35px 0;

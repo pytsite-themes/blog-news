@@ -27,7 +27,7 @@
                         </div>
                         <div class="column second">
                             <div class="author-name">
-                                <a href="{{ page_header_article.author.url }}">
+                                <a href="{{ rule_url('article_index_by_author', {'author': page_header_article.author.nickname}) }}">
                                     {{ page_header_article.author.full_name | e }}
                                 </a>
                             </div>

@@ -57,6 +57,7 @@ if plugman.is_installed(['content', 'section', 'article', 'page']):
     # These two routes needed by 'article' plugin as final point while processing request
     router.handle(controllers.ContentEntityIndex(), name='content_entity_index')
     router.handle(controllers.ContentEntityView(), name='content_entity_view')
+    router.handle(controllers.ContentEntityModify(), name='content_entity_modify')
 
     # "Article index by section" route
     router.handle('content@index', '/section/<term_alias>', 'article_index_by_section', {

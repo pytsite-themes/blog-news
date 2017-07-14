@@ -1,5 +1,6 @@
 """Theme Controllers
 """
+from typing import Union
 from datetime import datetime, timedelta
 from pytsite import tpl, odm, settings, auth_profile, plugman, routing, assetman
 from plugins import content, section, tag, comments
@@ -75,18 +76,22 @@ class ContentEntityView(routing.Controller):
 
     def exec(self) -> str:
         theme_v = settings.get('current-theme.version', '1')
-        e = self.arg('entity')
+        e = self.arg('entity')  # type: Union[model.Article, model.Page]
         exclude_ids = [e.id]
 
         self.args.update({
-            'page_header_article': e,
-            'page_header_article_tags': tag.widget.EntityTagCloud('header-article-tags', entity=e, term_css=''),
-            'fullscreen_page_header': True,
             'entity_tags': tag.widget.EntityTagCloud('entity-tag-cloud', entity=e, term_css=''),
             'related_1': _get_articles(exclude_ids, 3, e.section, 'views_count') if e.model == 'article' else [],
             'related_2': _get_articles(exclude_ids, 2, e.section, 'views_count') if e.model == 'article' else [],
             'related_3': _get_articles(exclude_ids, 2, e.section) if e.model == 'article' else [],
         })
+
+        if e.images:
+            self.args.update({
+                'page_header_article': e,
+                'page_header_article_tags': tag.widget.EntityTagCloud('header-article-tags', entity=e, term_css=''),
+                'fullscreen_page_header': True,
+            })
 
         if plugman.is_installed('addthis'):
             from plugins import addthis
@@ -102,6 +107,17 @@ class ContentEntityView(routing.Controller):
         assetman.preload('v{}/css/content-entity-view.css'.format(theme_v))
 
         return tpl.render('v{}/content-entity-view'.format(theme_v), self.args)
+
+
+class ContentEntityModify(routing.Controller):
+    """Content entity view
+    """
+
+    def exec(self) -> str:
+        theme_v = settings.get('current-theme.version', '1')
+        assetman.preload('v1/css/content-entity-modify.css'.format(theme_v))
+
+        return tpl.render('v1/content-entity-modify'.format(settings.get('current-theme.version', '1')), self.args)
 
 
 def _get_articles(exclude_ids: list, count: int = 6, sec: section.model.Section = None,

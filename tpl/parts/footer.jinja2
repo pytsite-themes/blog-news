@@ -47,6 +47,15 @@
                 <div class="left">
                     {{ t('footer_second_left') }}
                 </div>
+                {% if content_pages %}
+                    <div class="center">
+                        <ul>
+                            {% for page in content_pages %}
+                                {{ nav_link(page.url, page.title | e) }}
+                            {% endfor %}
+                        </ul>
+                    </div>
+                {% endif %}
                 <div class="right">
                     {{ t('footer_second_right') }}
                 </div>

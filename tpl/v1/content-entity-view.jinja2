@@ -1,15 +1,21 @@
 {% extends 'html' %}
 
 {% block content %}
-    <div id="content-entity-view" class="content-entity container" data-model="{{ entity.model }}"
-         data-entity-id="{{ entity.id }}">
+    <div id="content-entity-view" data-model="{{ entity.model }}" data-entity-id="{{ entity.id }}"
+         class="content-entity container {% if not page_header_article %} no-header-article {% endif %}">
 
         <div class="row">
             <article class="article col-xs-12">
+                {% if not page_header_article %}
+                    <h1 class="page-title">{{ metatag_get('title') | e }}</h1>
+                {% endif %}
+
                 {% block description %}
-                    <p class="description">
-                        {{ entity.description | e }}
-                    </p>
+                    {% if entity.description %}
+                        <p class="description">
+                            {{ entity.description | e }}
+                        </p>
+                    {% endif %}
                 {% endblock %}
 
                 <div class="body">
