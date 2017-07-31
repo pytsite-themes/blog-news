@@ -1,8 +1,8 @@
 {
-  "name": "news-blog",
+  "name": "blog-news",
   "description": "News Blog",
   "author": "Alexander Shepetko <a@shepetko.com>",
   "url": "https://github.com/pytsite-themes/blog-news",
-  "requires": "pytsite>=1.0",
-  "version": "0.1.1"
+  "requires": "pytsite>=2.0",
+  "version": "0.2"
 }

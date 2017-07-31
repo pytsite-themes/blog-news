@@ -1,6 +1,6 @@
 """PytSite Blog News Theme
 """
-from pytsite import tpl, assetman, settings, pkg_util, plugman, router, widget
+from pytsite import tpl, assetman, settings, package_info, plugman, router, widget
 from . import settings_form
 
 __author__ = 'Alexander Shepetko'
@@ -8,7 +8,7 @@ __email__ = 'a@shepetko.com'
 __license__ = 'MIT'
 
 # Check for Blog application presence
-if pkg_util.name('app') != 'blog':
+if package_info.name('app') != 'blog':
     raise RuntimeError('This theme is able to work only with PytSite Blog application. '
                        'See https://github.com/pytsite/blog for details.')
 
@@ -54,7 +54,7 @@ if plugman.is_installed(['content', 'section', 'article', 'page']):
 
     router.handle(controllers.Home(), '/', 'home')
 
-    # These two routes needed by 'article' plugin as final point while processing request
+    # Following routes required by 'content' plugin as final point while processing request
     router.handle(controllers.ContentEntityIndex(), name='content_entity_index')
     router.handle(controllers.ContentEntityView(), name='content_entity_view')
     router.handle(controllers.ContentEntityModify(), name='content_entity_modify')
