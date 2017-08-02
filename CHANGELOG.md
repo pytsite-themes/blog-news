@@ -1,5 +1,9 @@
 # PytSite Blog News Theme Changelog
 
+## 0.2.1 (2017-08-02)
+Fixed error in init.
+
+
 ## 0.2 (2017-07-31)
 Update to support latest PytSite 2.0 release.
 
