@@ -30,7 +30,7 @@ def on_tpl_render(tpl_name: str, args: dict):
         args['content_sections'] = list(section.get())
 
         if content.is_model_registered('page'):
-            args['content_pages'] = list(content.find('page').get()),
+            args['content_pages'] = list(content.find('page').get())
 
 
 # Assetman tasks
