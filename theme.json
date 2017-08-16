@@ -4,5 +4,5 @@
   "author": "Alexander Shepetko <a@shepetko.com>",
   "url": "https://github.com/pytsite-themes/blog_news",
   "requires": "pytsite>=3.1",
-  "version": "0.3"
+  "version": "0.3.1"
 }
