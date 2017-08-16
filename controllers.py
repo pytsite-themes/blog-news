@@ -16,7 +16,7 @@ class Home(routing.Controller):
     """
 
     def exec(self) -> str:
-        theme_v = settings.get('current-theme.version', '1')
+        theme_v = settings.get('theme.version', '1')
         exclude_ids = []
 
         starred = _get_articles(exclude_ids, 1, starred=True)
@@ -57,7 +57,7 @@ class ContentEntityIndex(routing.Controller):
     """
 
     def exec(self) -> str:
-        theme_v = settings.get('current-theme.version', '1')
+        theme_v = settings.get('theme.version', '1')
 
         self.args.update(content.paginate(self.arg('finder')))
 
@@ -75,7 +75,7 @@ class ContentEntityView(routing.Controller):
     """
 
     def exec(self) -> str:
-        theme_v = settings.get('current-theme.version', '1')
+        theme_v = settings.get('theme.version', '1')
         e = self.arg('entity')  # type: Union[model.Article, model.Page]
         exclude_ids = [e.id]
 
@@ -114,10 +114,10 @@ class ContentEntityModify(routing.Controller):
     """
 
     def exec(self) -> str:
-        theme_v = settings.get('current-theme.version', '1')
+        theme_v = settings.get('theme.version', '1')
         assetman.preload('v1/css/content-entity-modify.css'.format(theme_v))
 
-        return tpl.render('v1/content-entity-modify'.format(settings.get('current-theme.version', '1')), self.args)
+        return tpl.render('v1/content-entity-modify'.format(settings.get('theme.version', '1')), self.args)
 
 
 def _get_articles(exclude_ids: list, count: int = 6, sec: section.model.Section = None,
