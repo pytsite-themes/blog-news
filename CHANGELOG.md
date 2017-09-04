@@ -1,5 +1,9 @@
 # PytSite Blog News Theme Changelog
 
+## 0.4 (2017-09-04)
+Update to support latest PytSite 4.0 release.
+
+
 ## 0.3.1 (2017-08-16)
 Default logo display fixed.
 
