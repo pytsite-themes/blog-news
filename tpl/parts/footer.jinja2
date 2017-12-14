@@ -13,10 +13,10 @@
                 {{ language_nav }}
             </div>
 
-            {% set app_links = settings_get('app.links', []) %}
+            {% set app_links = reg_get('app.links', []) %}
             {% if app_links %}
                 <div class="links">
-                    {% for link in settings_get('app.links', ()) %}
+                    {% for link in reg_get('app.links', ()) %}
                         {% set icon = 'globe' %}
                         {% if 'facebook.com' in link %}
                             {% set icon = 'facebook' %}
@@ -34,7 +34,7 @@
                         <a class="item" target="_blank" href="{{ link }}"><i class="fa fa-{{ icon }}"></i></a>
                     {% endfor %}
 
-                    <a class="item" href="mailto:{{ settings_get('mail.from') }}"><i class="fa fa-envelope"></i></a>
+                    <a class="item" href="mailto:{{ reg_get('mail.from') }}"><i class="fa fa-envelope"></i></a>
                 </div>
             {% endif %}
         </div>
