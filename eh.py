@@ -1,6 +1,7 @@
 """PytSite Blog News Theme Event Handlers
 """
-from pytsite import settings, widget, lang, assetman, plugman
+from pytsite import lang, plugman, reg
+from plugins import settings, widget, assetman
 
 __author__ = 'Alexander Shepetko'
 __email__ = 'a@shepetko.com'
@@ -8,13 +9,13 @@ __license__ = 'MIT'
 
 
 def on_router_dispatch():
-    assetman.preload('v{}/css/common.css'.format(settings.get('theme.version', '1')))
+    assetman.preload('v{}/css/common.css'.format(reg.get('theme.version', '1')))
 
 
 def on_tpl_render(tpl_name: str, args: dict):
     args.update({
-        'theme_v': settings.get('theme.version', '1'),
-        'top_navbar_items_num': int(settings.get('theme.top_navbar_items_num', '5')),
+        'theme_v': reg.get('theme.version', '1'),
+        'top_navbar_items_num': int(reg.get('theme.top_navbar_items_num', '5')),
         'language_nav': widget.select.LanguageNav('language-nav'),
     })
 

@@ -1,10 +1,8 @@
 """Theme Controllers
 """
-from typing import Union
 from datetime import datetime, timedelta
-from pytsite import tpl, odm, settings, auth_profile, plugman, routing, assetman
-from plugins import content, section, tag, comments
-from app import model
+from pytsite import tpl, plugman, routing, reg
+from plugins import content, section, tag, comments, odm, auth_ui, assetman
 
 __author__ = 'Alexander Shepetko'
 __email__ = 'a@shepetko.com'
@@ -16,7 +14,7 @@ class Home(routing.Controller):
     """
 
     def exec(self) -> str:
-        theme_v = settings.get('theme.version', '1')
+        theme_v = reg.get('theme.version', '1')
         exclude_ids = []
 
         starred = _get_articles(exclude_ids, 1, starred=True)
@@ -57,13 +55,13 @@ class ContentEntityIndex(routing.Controller):
     """
 
     def exec(self) -> str:
-        theme_v = settings.get('theme.version', '1')
+        theme_v = reg.get('theme.version', '1')
 
         self.args.update(content.paginate(self.arg('finder')))
 
         author = self.arg('author')
         if author:
-            self.args['author_widget'] = auth_profile.widget.Profile('user-profile', user=author)
+            self.args['author_widget'] = auth_ui.widget.Profile('user-profile', user=author)
 
         assetman.preload('v{}/css/content-entity-index.css'.format(theme_v))
 
@@ -75,8 +73,8 @@ class ContentEntityView(routing.Controller):
     """
 
     def exec(self) -> str:
-        theme_v = settings.get('theme.version', '1')
-        e = self.arg('entity')  # type: Union[model.Article, model.Page]
+        theme_v = reg.get('theme.version', '1')
+        e = self.arg('entity')
         exclude_ids = [e.id]
 
         self.args.update({
@@ -96,7 +94,7 @@ class ContentEntityView(routing.Controller):
         if plugman.is_installed('addthis'):
             from plugins import addthis
             self.args.update({
-                'share_widget': addthis.widget.AddThis('add-this-share') if settings.get('addthis.pub_id') else '',
+                'share_widget': addthis.widget.AddThis('add-this-share') if reg.get('addthis.pub_id') else '',
             })
 
         if plugman.is_installed('disqus'):
@@ -114,10 +112,10 @@ class ContentEntityModify(routing.Controller):
     """
 
     def exec(self) -> str:
-        theme_v = settings.get('theme.version', '1')
+        theme_v = reg.get('theme.version', '1')
         assetman.preload('v1/css/content-entity-modify.css'.format(theme_v))
 
-        return tpl.render('v1/content-entity-modify'.format(settings.get('theme.version', '1')), self.args)
+        return tpl.render('v1/content-entity-modify'.format(reg.get('theme.version', '1')), self.args)
 
 
 def _get_articles(exclude_ids: list, count: int = 6, sec: section.model.Section = None,
@@ -134,7 +132,7 @@ def _get_articles(exclude_ids: list, count: int = 6, sec: section.model.Section 
     # Filter by publish time
     if days:
         # Determine last published article date
-        last_article = content.find('article').sort([('publish_time', odm.I_DESC)]).first()  # type: model.Article
+        last_article = content.find('article').sort([('publish_time', odm.I_DESC)]).first()
         if last_article:
             f.gte('publish_time', last_article.publish_time - timedelta(days))
         else:
