@@ -14,7 +14,13 @@
   },
   "requires": {
     "plugins": [
-      "jquery_gotop"
+      "article",
+      "assetman",
+      "content",
+      "jquery_gotop",
+      "page",
+      "section",
+      "settings"
     ]
   }
 }
