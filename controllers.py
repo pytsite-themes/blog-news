@@ -1,12 +1,12 @@
 """Theme Controllers
 """
-from datetime import datetime, timedelta
-from pytsite import tpl, plugman, routing, reg
-from plugins import content, section, tag, comments, odm, auth_ui, assetman
-
 __author__ = 'Alexander Shepetko'
 __email__ = 'a@shepetko.com'
 __license__ = 'MIT'
+
+from datetime import datetime, timedelta
+from pytsite import tpl, plugman, routing, reg
+from plugins import content, section, tag, comments, odm, auth_ui, assetman
 
 
 class Home(routing.Controller):

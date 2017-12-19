@@ -11,5 +11,10 @@
     "name": "Alexander Shepetko",
     "email": "a@shepetko.com",
     "url": "https://shepetko.com"
+  },
+  "requires": {
+    "plugins": [
+      "jquery_gotop"
+    ]
   }
 }
