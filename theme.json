@@ -3,14 +3,14 @@
   "version": "0.5",
   "url": "https://github.com/pytsite-themes/blog_news",
   "description": {
-    "en": "News Blog",
-    "ru": "News Blog",
-    "uk": "News Blog"
+    "en": "News",
+    "ru": "Новости",
+    "uk": "Новини блог"
   },
   "author": {
-    "name": "Alexander Shepetko",
-    "email": "a@shepetko.com",
-    "url": "https://shepetko.com"
+    "name": "Red Robot",
+    "email": "hello@robot.red",
+    "url": "http://robot.red/"
   },
   "requires": {
     "plugins": [
