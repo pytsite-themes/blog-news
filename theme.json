@@ -1,11 +1,11 @@
 {
   "name": "blog_news",
-  "version": "0.5",
+  "version": "2.0",
   "url": "https://github.com/pytsite-themes/blog_news",
   "description": {
     "en": "News",
     "ru": "Новости",
-    "uk": "Новини блог"
+    "uk": "Новини"
   },
   "author": {
     "name": "Red Robot",

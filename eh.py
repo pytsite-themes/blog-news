@@ -1,11 +1,11 @@
 """PytSite Blog News Theme Event Handlers
 """
-from pytsite import lang, plugman, reg
-from plugins import settings, widget, assetman
-
 __author__ = 'Alexander Shepetko'
 __email__ = 'a@shepetko.com'
 __license__ = 'MIT'
+
+from pytsite import lang, plugman, reg
+from plugins import settings, widget, assetman
 
 
 def on_router_dispatch():

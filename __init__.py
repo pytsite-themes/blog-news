@@ -1,10 +1,10 @@
 """PytSite Blog News Theme
 """
-from pytsite import package_info, plugman
-
 __author__ = 'Alexander Shepetko'
 __email__ = 'a@shepetko.com'
 __license__ = 'MIT'
+
+from pytsite import package_info, plugman
 
 # Check for Blog application presence
 if package_info.name('app') != 'blog':
