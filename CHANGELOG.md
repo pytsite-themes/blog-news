@@ -1,6 +1,11 @@
 # PytSite Blog News Theme Changelog
 
 
+## 2.0.2 (2018-01-08)
+
+`theme.json` fixed.
+
+
 ## 2.0.1 (2018-01-08)
 
 Default logo removed.
