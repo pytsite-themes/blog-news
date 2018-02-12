@@ -4,15 +4,16 @@ __author__ = 'Alexander Shepetko'
 __email__ = 'a@shepetko.com'
 __license__ = 'MIT'
 
-from pytsite import package_info, plugman
+from pytsite import package_info
 
 # Check for Blog application presence
 if package_info.name('app') != 'blog':
     raise RuntimeError('This theme is able to work only with PytSite Blog application. '
                        'See https://github.com/pytsite/blog for details.')
 
-if plugman.is_installed(['assetman', 'content', 'section', 'article', 'page', 'settings']):
-    from pytsite import reg, tpl, package_info, plugman, router, events
+
+def theme_load():
+    from pytsite import reg, tpl, router, events
     from plugins import assetman
     from . import controllers, eh
 
@@ -21,7 +22,7 @@ if plugman.is_installed(['assetman', 'content', 'section', 'article', 'page', 's
     assetman.t_copy_static('**')
     assetman.t_less('**')
 
-    if reg.get('env.type') == 'uwsgi':
+    if reg.get('env.type') == 'wsgi':
         # Home page route
         router.handle(controllers.Home, '/', 'home')
 
