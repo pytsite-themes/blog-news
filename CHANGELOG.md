@@ -1,6 +1,12 @@
 # PytSite Blog News Theme Changelog
 
 
+## 2.0.3 (2018-01-16)
+
+- Init code refactored.
+- Support for `auth_ui_password-1.2` added.
+
+
 ## 2.0.2 (2018-01-08)
 
 `theme.json` fixed.
