@@ -1,6 +1,11 @@
 # PytSite Blog News Theme Changelog
 
 
+## 2.0.4 (2018-01-21)
+
+`theme.json` updated.
+
+
 ## 2.0.3 (2018-01-16)
 
 - Init code refactored.

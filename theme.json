@@ -16,6 +16,7 @@
     "plugins": [
       "article",
       "assetman",
+      "auth_ui_password",
       "content",
       "jquery_gotop",
       "page",

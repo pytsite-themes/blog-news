@@ -25,9 +25,6 @@ def theme_load_wsgi():
     from plugins import assetman
     from . import controllers, eh
 
-    # Force Twitter Bootstrap v3 on the password authentication page
-    reg.put('auth_ui_password.twitter_bootstrap_version', 3)
-
     # Home page route
     router.handle(controllers.Home, '/', 'home')
 
@@ -59,6 +56,9 @@ def theme_load_wsgi():
     events.listen('settings@form.setup_widgets.theme', eh.settings_form_setup_widgets_setup_widgets_theme)
 
     # Preload permanent assets
-    assetman.preload('twitter-bootstrap', True)
+    assetman.preload('twitter-bootstrap-3', True)
     assetman.preload('font-awesome', True)
     assetman.preload('common.js', True)
+
+    # Force Twitter Bootstrap v3 on the password authentication page
+    reg.put('auth_ui_password.twitter_bootstrap_version', 3)
