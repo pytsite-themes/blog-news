@@ -6,7 +6,7 @@ __license__ = 'MIT'
 
 from datetime import datetime, timedelta
 from pytsite import tpl, plugman, routing, reg
-from plugins import content, section, tag, comments, odm, auth_ui, assetman
+from plugins import content, section, tag, comments, odm, assetman
 
 
 class Home(routing.Controller):
@@ -50,25 +50,19 @@ class Home(routing.Controller):
         return tpl.render('v{}/home'.format(theme_v), tpl_args)
 
 
-class ContentEntityIndex(routing.Controller):
+class ContentIndex(routing.Controller):
     """Content entity index
     """
 
     def exec(self) -> str:
         theme_v = reg.get('theme.version', '1')
-
         self.args.update(content.paginate(self.arg('finder')))
-
-        author = self.arg('author')
-        if author:
-            self.args['author_widget'] = auth_ui.widget.Profile('user-profile', user=author)
-
         assetman.preload('v{}/css/content-entity-index.css'.format(theme_v))
 
         return tpl.render('v{}/content-entity-index'.format(theme_v), self.args)
 
 
-class ContentEntityView(routing.Controller):
+class ContentView(routing.Controller):
     """Content entity view
     """
 
@@ -107,7 +101,7 @@ class ContentEntityView(routing.Controller):
         return tpl.render('v{}/content-entity-view'.format(theme_v), self.args)
 
 
-class ContentEntityModify(routing.Controller):
+class ContentModify(routing.Controller):
     """Content entity view
     """
 

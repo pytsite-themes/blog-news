@@ -1,6 +1,12 @@
 # PytSite Blog News Theme Changelog
 
 
+## 2.1 (2018-05-24)
+
+- Support of `content-4.5`.
+- Bugs fixed.
+
+
 ## 2.0.4 (2018-01-21)
 
 `theme.json` updated.

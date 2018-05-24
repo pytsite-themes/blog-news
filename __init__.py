@@ -29,9 +29,9 @@ def theme_load_wsgi():
     router.handle(controllers.Home, '/', 'home')
 
     # Following routes required by 'content' plugin as final point while processing request
-    router.handle(controllers.ContentEntityIndex, name='content_entity_index')
-    router.handle(controllers.ContentEntityView, name='content_entity_view')
-    router.handle(controllers.ContentEntityModify, name='content_entity_modify')
+    router.handle(controllers.ContentIndex, name='content_index')
+    router.handle(controllers.ContentView, name='content_view')
+    router.handle(controllers.ContentModify, name='content_modify')
 
     # "Article index by section" route
     router.handle('content@index', '/section/<term_alias>', 'article_index_by_section', {
