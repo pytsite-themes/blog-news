@@ -1,6 +1,6 @@
 {
   "name": "blog_news",
-  "version": "2.1",
+  "version": "2.2",
   "url": "http://robot.red",
   "description": {
     "en": "News",
@@ -15,7 +15,7 @@
   "requires": {
     "plugins": [
       "article",
-      "assetman",
+      "assetman>=2.2",
       "auth_ui_password",
       "contact_form",
       "content>=4.5",

@@ -1,6 +1,11 @@
 # PytSite Blog News Theme Changelog
 
 
+## 2.2 (2018-07-10)
+
+- Support of `assetman-2.2`.
+
+
 ## 2.1 (2018-05-24)
 
 - Support of `content-4.5`.
